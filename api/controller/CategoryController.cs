@@ -59,5 +59,18 @@ namespace api.controller
         return Ok(categoryModel.ToCategoryDto());
 
      }
+
+     [HttpDelete]
+     [Route("{id}")]
+     public IActionResult Delete([FromRoute]int id){
+        var categoryModel = _context.Category.FirstOrDefault(x=> x.id == id);
+        if(categoryModel == null){
+            return NotFound();
+        }
+        _context.Remove(categoryModel);
+        _context.SaveChanges();
+        return NoContent();
+
+     }
     }
 }
