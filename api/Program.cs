@@ -1,4 +1,6 @@
 using api.data;
+using api.interfaces;
+using api.repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options=>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<ICategoryInterface,CategoryRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

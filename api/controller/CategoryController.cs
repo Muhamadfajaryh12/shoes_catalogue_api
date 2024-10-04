@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.data;
 using api.dtos.Category;
+using api.interfaces;
 using api.mapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.controller
 {
@@ -13,24 +15,31 @@ namespace api.controller
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-     public CategoryController(ApplicationDBContext context)
+     private readonly ApplicationDBContext _context;
+     private readonly ICategoryInterface _categoryRepository;
+     public CategoryController(ApplicationDBContext context, ICategoryInterface categoryRepository)
      {
+      _categoryRepository = categoryRepository;
       _context  = context;  
      }   
 
      [HttpGet]
 
-     public IActionResult GetAll(){
-        var category = _context.Category.ToList().Select(item=>item.ToCategoryDto());
-        return Ok(category); 
+     public async Task<IActionResult> GetAll(){
+           if (!ModelState.IsValid)
+               return BadRequest(ModelState);
+
+      var categoryList = await _categoryRepository.GetAllAsync();
+      var categoryDtoList = categoryList.Select(item => item.ToCategoryDto()).ToList();
+        return Ok(categoryDtoList); 
      }
 
-     [HttpGet("{id}")]
+     [HttpGet("{id:int}")]
 
-     public IActionResult GetById([FromRoute] int id){
-        var category = _context.Category.Find(id);
-
+     public async Task<IActionResult> GetById([FromRoute] int id){
+       if (!ModelState.IsValid)
+          return BadRequest(ModelState);
+        var category = await _categoryRepository.GetByIdAsync(id);
         if(category == null){
             return NotFound();
         }
@@ -38,37 +47,38 @@ namespace api.controller
      }  
 
      [HttpPost]
-        public IActionResult Create([FromBody] CreateCategoryRequestDto categoryDto){
-        var categoryModel =categoryDto.ToCategoryFromCreateDTO();
-        _context.Category.Add(categoryModel);
-        _context.SaveChanges();
-
+        public async Task<IActionResult> Create([FromBody] CreateCategoryRequestDto categoryDto){      
+          if (!ModelState.IsValid)
+          return BadRequest(ModelState);
+        var categoryModel = categoryDto.ToCategoryFromCreateDTO();
+        await _categoryRepository.CreatedAsync(categoryModel);
         return CreatedAtAction(nameof(GetById), new { id = categoryModel.id}, categoryModel.ToCategoryDto());
      }
 
      [HttpPut]
-     [Route("{id}")]
+     [Route("{id:int}")]
 
-     public IActionResult Update([FromRoute] int id, [FromBody] CreateCategoryRequestDto categoryDto){
-        var categoryModel = _context.Category.FirstOrDefault(x=> x.id == id);
+     public async Task <IActionResult> Update([FromRoute] int id, [FromBody] CreateCategoryRequestDto categoryDto){
+         if (!ModelState.IsValid)
+          return BadRequest(ModelState);
+        var categoryModel = await _categoryRepository.UpdatedAsync(id,categoryDto);
         if(categoryModel == null){
             return NotFound();
         }
-        categoryModel.CategoryName = categoryDto.CategoryName;
-        _context.SaveChanges();
         return Ok(categoryModel.ToCategoryDto());
 
      }
 
      [HttpDelete]
-     [Route("{id}")]
-     public IActionResult Delete([FromRoute]int id){
-        var categoryModel = _context.Category.FirstOrDefault(x=> x.id == id);
+     [Route("{id:int}")]
+     public async Task<IActionResult> Delete([FromRoute]int id){
+         if (!ModelState.IsValid)
+          return BadRequest(ModelState);
+        var categoryModel = await _categoryRepository.DeletedAsync(id);
         if(categoryModel == null){
             return NotFound();
         }
-        _context.Remove(categoryModel);
-        _context.SaveChanges();
+     
         return NoContent();
 
      }
