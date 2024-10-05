@@ -11,11 +11,11 @@ namespace api.models{
         public int Size {get;set;} = 0;
         public int Stock {get;set;} = 0;
 
-        public DateTime CreatedOn{get;set;} = DateTime.Now;
 
         public string? ImageUrl{get;set;} = string.Empty;
         public int? CategoryId{get;set;}
         public Category? Category{get;set;}
+        public DateTime CreatedOn{get;set;} = DateTime.Now;
 
     }
 }

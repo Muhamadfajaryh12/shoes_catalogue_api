@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.repository
 {
-    public class ShoesRepository : ShoesInterface
+    public class ShoesRepository : IShoesInterface
     {
         private readonly ApplicationDBContext _context;
 
@@ -19,7 +19,9 @@ namespace api.repository
         }
 
         public async Task<List<Shoes>> GetAllAsync(){
-            return await _context.Shoes.ToListAsync();
+           return await _context.Shoes
+        .Include(s => s.Category) 
+        .ToListAsync();
         }
 
         public async Task<Shoes?>GetByIdAsync(int id){
@@ -30,7 +32,20 @@ namespace api.repository
             return shoesModel;
         }
 
-        public async Task<Shoes>CreatedAsync(Shoes shoesModel){
+        public async Task<Shoes> CreatedAsync(Shoes shoesModel, IFormFile imageFile){
+            if (imageFile != null && imageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(stream);
+                    }
+
+                    shoesModel.ImageUrl = $"/images/{fileName}";
+                }
+
             await _context.Shoes.AddAsync(shoesModel);
             await _context.SaveChangesAsync();
             return shoesModel;
@@ -45,10 +60,8 @@ namespace api.repository
                 shoesModel.Price = shoesDto.Price;
                 shoesModel.Size = shoesDto.Size;
                 shoesModel.Stock = shoesDto.Stock;
-                shoesModel.CreatedOn = shoesDto.CreatedOn;
-                shoesModel.ImageUrl = shoesDto.ImageUrl;
                 shoesModel.CategoryId = shoesDto.CategoryId;
-                
+
             await _context.SaveChangesAsync();
             return shoesModel;
 

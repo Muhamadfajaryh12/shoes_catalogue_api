@@ -1,11 +1,77 @@
 {
   "Version": 1,
-  "Hash": "pyaMSCEWRZ4nvKCja2XnniyJFEBxfxA7VVvbHvFd6MQ=",
+  "Hash": "w60MgcN9Kx32QFda42u2iFgR/Lr5h0kv1/C1ECY60yw=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "api\\wwwroot",
+      "Source": "api",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\Jurnal_2010631170090.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/Jurnal_2010631170090.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Jurnal_2010631170090.png"
+    },
+    {
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\Screenshot 2024-08-21 075816.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/Screenshot 2024-08-21 075816.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Screenshot 2024-08-21 075816.png"
+    },
+    {
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\Tracer_Study_2010631170090.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/Tracer_Study_2010631170090.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Tracer_Study_2010631170090.png"
+    }
+  ]
 }

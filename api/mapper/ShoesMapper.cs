@@ -20,8 +20,14 @@ namespace api.mapper
                 Stock = shoesModel.Stock,
                 CreatedOn = shoesModel.CreatedOn,
                 ImageUrl = shoesModel.ImageUrl,
-                CategoryId = shoesModel.CategoryId
-            };
+                CategoryId = shoesModel.CategoryId,    Category = shoesModel.Category != null ? new CategoryDto
+        {
+            id = shoesModel.Category.id,
+            CategoryName = shoesModel.Category.CategoryName,
+            CreatedOn = shoesModel.Category.CreatedOn
+        } : null
+                 
+        };
         }
 
         public static Shoes ToShoesFromCreateDTO(this CreateShoesRequestDto shoesDto){
@@ -31,8 +37,6 @@ namespace api.mapper
                 Price = shoesDto.Price,
                 Size = shoesDto.Size,
                 Stock = shoesDto.Stock,
-                CreatedOn = shoesDto.CreatedOn,
-                ImageUrl = shoesDto.ImageUrl,
                 CategoryId = shoesDto.CategoryId
             };
         }

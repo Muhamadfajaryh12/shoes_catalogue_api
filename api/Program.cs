@@ -16,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(options=>{
 });
 
 builder.Services.AddScoped<ICategoryInterface,CategoryRepository>();
+builder.Services.AddScoped<IShoesInterface,ShoesRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +28,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();

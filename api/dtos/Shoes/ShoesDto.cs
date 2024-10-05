@@ -18,6 +18,8 @@ namespace api.dtos.Category
         public DateTime CreatedOn{get;set;} = DateTime.Now;
 
         public string? ImageUrl{get;set;} = string.Empty;
-        public int? CategoryId{get;set;}
+        public int? CategoryId{get;set;}    
+         public CategoryDto? Category { get; set; } 
+
     }
 }

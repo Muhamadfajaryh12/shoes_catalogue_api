@@ -18,9 +18,6 @@ namespace api.dtos.Shoes
         public int Size {get;set;} = 0;
         [Required]
         public int Stock {get;set;} = 0;
-        public DateTime CreatedOn{get;set;} = DateTime.Now;
-        [Required]
-        public string? ImageUrl{get;set;} = string.Empty;
         [Required]
         public int? CategoryId{get;set;}
     }

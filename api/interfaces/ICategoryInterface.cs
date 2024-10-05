@@ -11,10 +11,8 @@ namespace api.interfaces
     {
                 Task<List<Category>> GetAllAsync();
                 Task<Category?> GetByIdAsync(int id);
-
                 Task<Category> CreatedAsync( Category categoryModel);
                 Task<Category?> UpdatedAsync (int id, CreateCategoryRequestDto categoryDto);
-
                 Task<Category?> DeletedAsync (int id);
 
     }
