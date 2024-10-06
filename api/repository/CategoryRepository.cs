@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using api.data;
+using api.dtos;
 using api.dtos.Category;
 using api.interfaces;
 using api.models;
@@ -18,23 +19,49 @@ namespace api.repository
         public CategoryRepository(ApplicationDBContext context){
             _context = context;
         }
-        
-        public  Task<List<Category>> GetAllAsync(){
-            return _context.Category.ToListAsync();
-        }
+        public async Task<ResponseDTO<Category>> GetAllAsync()
+        {
+                var categoryModel = await _context.Category.ToListAsync();
 
-        public async Task<Category?>GetByIdAsync(int id){
+                var response = new ResponseDTO<Category>
+                {
+                    Success = true,
+                    Message = "Categories retrieved successfully",
+                    Data = categoryModel 
+                };
+
+                return response; 
+        }
+        
+
+        public async Task<ResponseDTO<Category?>>GetByIdAsync(int id){
             var categoryModel = await _context.Category.FindAsync(id);
+
             if(categoryModel == null){
                 return null;
             }
-            return categoryModel;
+            var response = new ResponseDTO<Category>
+            {
+                Success = true,
+                Message = "Categories retrieved successfully",
+                Data = categoryModel 
+            };
+
+            return response;
         }
 
-        public async Task<Category> CreatedAsync(Category categoryModel){
+        public async Task<ResponseDTO<Category>> CreatedAsync(Category categoryModel){
             await _context.Category.AddAsync(categoryModel);
             await _context.SaveChangesAsync();
-            return categoryModel;
+            var response = new ResponseDTO<Category>
+            {
+                Success = true,
+                Message = "Category created successfully",
+                Data = new List<Category> { categoryModel }
+            };
+
+            return response;
+         
         }
 
         public async Task<Category?> UpdatedAsync(int id, CreateCategoryRequestDto categoryDto){
@@ -49,6 +76,7 @@ namespace api.repository
         }
         public async Task<Category?> DeletedAsync(int id){
             var categoryModel = await _context.Category.FirstOrDefaultAsync(x=> x.id == id);
+
             if(categoryModel == null){
                 return null;
             }
@@ -57,6 +85,9 @@ namespace api.repository
             await _context.SaveChangesAsync();
             return categoryModel;
         }
-        
+
+   
     }
+
+  
 }

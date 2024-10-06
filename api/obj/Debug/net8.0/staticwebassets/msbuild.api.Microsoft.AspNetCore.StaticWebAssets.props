@@ -1,5 +1,37 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>api</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api</BasePath>
+      <RelativePath>images/34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>api</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/api</BasePath>
+      <RelativePath>images/e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\Jurnal_2010631170090.pngb637c7ac-5faa-4a3c-a4aa-d8f10c25936d))">
       <SourceType>Package</SourceType>
       <SourceId>api</SourceId>

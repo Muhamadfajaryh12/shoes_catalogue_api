@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "at9nRDWgLS4+6v2GPY9AC84nw7AEtEWZvWtLe/hWvdY=",
+  "Hash": "Xx5q5Ten0rYX+zLl7xQZRRPxf/DD5lgbhZYbvGzzPTU=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png"
+    },
+    {
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png"
+    },
     {
       "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\Jurnal_2010631170090.pngb637c7ac-5faa-4a3c-a4aa-d8f10c25936d",
       "SourceId": "api",

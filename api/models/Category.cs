@@ -8,7 +8,6 @@ namespace api.models{
         public int id{
             get;set;
         }
-
         public string CategoryName {get;set;} = string.Empty;
         public DateTime CreatedOn{get;set;} = DateTime.Now;
 

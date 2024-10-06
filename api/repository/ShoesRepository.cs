@@ -53,9 +53,23 @@ namespace api.repository
 
         public async Task<Shoes?>UpdatedAsync(int id, CreateShoesRequestDto shoesDto, IFormFile imageFile){
             var shoesModel = await _context.Shoes.FirstOrDefaultAsync(x=> x.Id == id);
-            if(shoesModel == null){
-                return null;
-            }
+                if(shoesModel == null){
+                    return null;
+                }
+                if(!string.IsNullOrEmpty(shoesModel.ImageUrl)){
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", shoesModel.ImageUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(imagePath))
+                        {
+                            try
+                            {
+                                System.IO.File.Delete(imagePath); 
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception("Error deleting image file.", ex);
+                            }
+                        }
+                }
 
                 if (imageFile != null && imageFile.Length > 0)
                 {
@@ -78,7 +92,6 @@ namespace api.repository
 
             await _context.SaveChangesAsync();
             return shoesModel;
-
         }
 
         public async Task<Shoes?>DeletedAsync(int id){

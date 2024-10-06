@@ -25,14 +25,21 @@ namespace api.controller
 
      [HttpGet]
 
-     public async Task<IActionResult> GetAll(){
-           if (!ModelState.IsValid)
-               return BadRequest(ModelState);
+     public async Task<IActionResult> GetAll() {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
 
-      var categoryList = await _categoryRepository.GetAllAsync();
-      var categoryDtoList = categoryList.Select(item => item.ToCategoryDto()).ToList();
-        return Ok(categoryDtoList); 
-     }
+        var categoryListResponse = await _categoryRepository.GetAllAsync();
+
+        // Memastikan ResponseDTO berhasil
+        if (!categoryListResponse.Success)
+        {
+            return BadRequest(categoryListResponse.Message);
+        }
+
+        // Mengembalikan data kategori
+        return Ok(categoryListResponse); // Kembalikan data kategori dalam response
+    }
 
      [HttpGet("{id:int}")]
 
