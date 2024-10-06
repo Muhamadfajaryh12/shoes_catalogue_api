@@ -12,7 +12,7 @@ namespace api.interfaces
         Task<List<Shoes>> GetAllAsync();
         Task<Shoes?> GetByIdAsync(int id);
         Task<Shoes> CreatedAsync(Shoes shoesModel,IFormFile formFile);
-        Task<Shoes?> UpdatedAsync(int id, CreateShoesRequestDto shoesDto);
+        Task<Shoes?> UpdatedAsync(int id, CreateShoesRequestDto shoesDto, IFormFile formFile);
         Task<Shoes?> DeletedAsync(int id);
 
     }

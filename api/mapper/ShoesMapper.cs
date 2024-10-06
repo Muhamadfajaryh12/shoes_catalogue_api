@@ -20,12 +20,13 @@ namespace api.mapper
                 Stock = shoesModel.Stock,
                 CreatedOn = shoesModel.CreatedOn,
                 ImageUrl = shoesModel.ImageUrl,
-                CategoryId = shoesModel.CategoryId,    Category = shoesModel.Category != null ? new CategoryDto
-        {
-            id = shoesModel.Category.id,
-            CategoryName = shoesModel.Category.CategoryName,
-            CreatedOn = shoesModel.Category.CreatedOn
-        } : null
+                CategoryId = shoesModel.CategoryId,    
+                Category = shoesModel.Category != null ? new CategoryDto
+                {
+                    id = shoesModel.Category.id,
+                    CategoryName = shoesModel.Category.CategoryName,
+                    CreatedOn = shoesModel.Category.CreatedOn
+                } : null
                  
         };
         }
@@ -37,7 +38,8 @@ namespace api.mapper
                 Price = shoesDto.Price,
                 Size = shoesDto.Size,
                 Stock = shoesDto.Stock,
-                CategoryId = shoesDto.CategoryId
+                CategoryId = shoesDto.CategoryId,
+                
             };
         }
     }

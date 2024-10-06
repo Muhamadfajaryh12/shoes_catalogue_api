@@ -35,8 +35,8 @@ namespace api.repository
         public async Task<Shoes> CreatedAsync(Shoes shoesModel, IFormFile imageFile){
             if (imageFile != null && imageFile.Length > 0)
                 {
-                    var fileName = Path.GetFileName(imageFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                    var fileName =  Guid.NewGuid().ToString()+"_"+Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images",fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
@@ -51,11 +51,25 @@ namespace api.repository
             return shoesModel;
         }
 
-        public async Task<Shoes?>UpdatedAsync(int id, CreateShoesRequestDto shoesDto){
+        public async Task<Shoes?>UpdatedAsync(int id, CreateShoesRequestDto shoesDto, IFormFile imageFile){
             var shoesModel = await _context.Shoes.FirstOrDefaultAsync(x=> x.Id == id);
             if(shoesModel == null){
                 return null;
             }
+
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var fileName =  Guid.NewGuid().ToString()+"_"+Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(stream);
+                    }
+
+                    shoesModel.ImageUrl = $"/images/{fileName}";
+                }
+
                 shoesModel.ShoesName = shoesDto.ShoesName;
                 shoesModel.Price = shoesDto.Price;
                 shoesModel.Size = shoesDto.Size;
@@ -69,8 +83,24 @@ namespace api.repository
 
         public async Task<Shoes?>DeletedAsync(int id){
             var shoesModel = await _context.Shoes.FirstOrDefaultAsync(x=> x.Id ==id);
+
             if(shoesModel == null){
                 return null;
+            }
+
+            if(!string.IsNullOrEmpty(shoesModel.ImageUrl)){
+                 var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", shoesModel.ImageUrl.TrimStart('/'));
+                 if (System.IO.File.Exists(imagePath))
+                    {
+                        try
+                        {
+                            System.IO.File.Delete(imagePath); 
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error deleting image file.", ex);
+                        }
+                    }
             }
 
             _context.Shoes.Remove(shoesModel);

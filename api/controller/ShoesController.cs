@@ -57,6 +57,34 @@ namespace api.controller
             return CreatedAtAction(nameof(GetById),new{id = shoesModel.Id}, shoesModel.ToShoesDTO());
         }
 
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IActionResult>Update([FromRoute] int id, [FromForm] CreateShoesRequestDto shoesDto, IFormFile formFile){
+            if(!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+            var shoesModel = await _shoesRepository.UpdatedAsync(id,shoesDto,formFile);
+            
+            if(shoesModel == null){
+                return NotFound();
+            }
+
+            return Ok(shoesModel);
+
+        }
+
+
+        [HttpDelete]
+        [Route("{id:int}")]
+
+        public async Task<IActionResult>Delete([FromRoute] int id){
+            var shoesModel = await _shoesRepository.DeletedAsync(id);
+            if(shoesModel == null){
+                return NotFound();
+            }
+
+            return NoContent();
+        }
    
     
     }

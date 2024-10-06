@@ -9,11 +9,11 @@ namespace api.interfaces
 {
     public interface ICategoryInterface
     {
-                Task<List<Category>> GetAllAsync();
-                Task<Category?> GetByIdAsync(int id);
-                Task<Category> CreatedAsync( Category categoryModel);
-                Task<Category?> UpdatedAsync (int id, CreateCategoryRequestDto categoryDto);
-                Task<Category?> DeletedAsync (int id);
+            Task<List<Category>> GetAllAsync();
+            Task<Category?> GetByIdAsync(int id);
+            Task<Category> CreatedAsync( Category categoryModel);
+            Task<Category?> UpdatedAsync (int id, CreateCategoryRequestDto categoryDto);
+            Task<Category?> DeletedAsync (int id);
 
     }
 }

@@ -10,7 +10,7 @@ namespace api.dtos.Shoes
     {
         [Required]
         [MinLength(5,ErrorMessage = "Name must be 5 Character")]
-        [MaxLength(5,ErrorMessage = "Name cannot be over 255 Character")]
+        [MaxLength(255,ErrorMessage = "Name cannot be over 255 Character")]
         public string ShoesName {get;set;} = string.Empty;
         [Required]
         public long Price {get;set;} = 0;
@@ -20,5 +20,7 @@ namespace api.dtos.Shoes
         public int Stock {get;set;} = 0;
         [Required]
         public int? CategoryId{get;set;}
+
+
     }
 }
