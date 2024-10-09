@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options=>{
 
 builder.Services.AddScoped<ICategoryInterface,CategoryRepository>();
 builder.Services.AddScoped<IShoesInterface,ShoesRepository>();
+builder.Services.AddScoped<IUserInterface,UserRepository>();
 
 var app = builder.Build();
 

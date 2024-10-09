@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xx5q5Ten0rYX+zLl7xQZRRPxf/DD5lgbhZYbvGzzPTU=",
+  "Hash": "swD4mri5lfKVONpNsZIiekV2+sIVJql3GQb3BLED1Og=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png",
+      "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\65d37769-89e9-4a0c-b806-8e58f96bc1d7_4x6Fajar.jpg",
       "SourceId": "api",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\",
       "BasePath": "_content/api",
-      "RelativePath": "images/34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png",
+      "RelativePath": "images/65d37769-89e9-4a0c-b806-8e58f96bc1d7_4x6Fajar.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,7 +33,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\34e98275-d488-40b0-aa08-0c00c8ca6b54Screenshot 2024-08-21 075816.png"
+      "OriginalItemSpec": "wwwroot\\images\\65d37769-89e9-4a0c-b806-8e58f96bc1d7_4x6Fajar.jpg"
     },
     {
       "Identity": "D:\\Coding\\ASP NET\\api_catalogue\\api\\wwwroot\\images\\e53074b9-2412-48f0-a9f0-344d55941ace_Jurnal_2010631170090.png",
