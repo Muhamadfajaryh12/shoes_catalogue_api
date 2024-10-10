@@ -24,8 +24,8 @@ namespace api.repository
                 return null;
             }
 
-            var validationPassword = _context.User.FirstOrDefault(x=> x.Password == userModel.Password);
-            if(validationPassword == null){
+            var validationPassword = BCrypt.Net.BCrypt.Verify(userModel.Password, user.Password);
+            if(!validationPassword){
                 return null;
             }
 
@@ -36,6 +36,8 @@ namespace api.repository
 
         public  async Task<User> Register(User userModel)
         {
+
+            userModel.Password = BCrypt.Net.BCrypt.HashPassword(userModel.Password);
             await _context.User.AddAsync(userModel);
             await _context.SaveChangesAsync();
             return userModel;
